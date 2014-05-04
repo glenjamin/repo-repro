@@ -14,23 +14,35 @@ and multiple destinations from a single source.
 Setup
 -----
 
+Get a local copy of the repo-repro repository
+
 ```bash
-# Get a local copy of the repository
 git clone https://github.com/glenjamin/repo-repro
 cd repo-repro
+```
 
-# Set your app up running on a PaaS
+Set the application up on a public-facing PaaS, We'll use heroku,
+adapt as necessary if you're using something else.
+
+```bash
 heroku apps:create
+git push heroku
+```
 
-# Configure remote repo locations
-TODO
+Configure your remote source and destination repositories
 
-# Configure remote repo credentials
-TODO
+```bash
+heroku config:set SRC_REPO=<remote-repo-uri>
+heroku config:set DEST_REPO=<remote-repo-uri>
+```
 
-# Enable web hook on source repo
-TODO
+Currently only HTTPS basic auth credentials are supported, include these in the
+repository URI, eg. `https://user:pass@github.com/glenjamin/repo-repro`.
 
+
+Enable the web hook on the source repo
+```
+# TODO
 ```
 
 API
@@ -44,4 +56,10 @@ implementations
 
 `/github` - TODO
 
-`/bitbucket` - TODO
+
+TODO
+----
+
+ * Private key based authentication
+ * Multiple destinations
+ * Multiple repositories in a single deploy
