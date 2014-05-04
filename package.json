@@ -1,0 +1,20 @@
+{
+  "name": "repo-repro",
+  "version": "0.0.0",
+  "private": "true",
+  "description": "Reproduce a repository at another location, triggered by HTTP.",
+  "scripts": {
+    "start": "node run.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/glenjamin/repo-repro.git"
+  },
+  "author": "Glen Mailer <glenjamin@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/glenjamin/repo-repro/issues"
+  },
+  "homepage": "https://github.com/glenjamin/repo-repro"
+}
