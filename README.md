@@ -58,6 +58,8 @@ Now you just need to enable the web hook on the source repo
 
 Github will record the results of each hook on the `Webhooks & Services` page.
 
+Activity will also be logged in the application log, see `heroku logs`.
+
 ### Using BitBucket as your source
 
  * Select the `Administration` Cog ⚙ from your repository page.
@@ -66,6 +68,9 @@ Github will record the results of each hook on the `Webhooks & Services` page.
  * Enter your *Hook URL* in the dialog box
 
 BitBucket does not appear to record the results of each hook.
+
+Activity will be logged in the application log, see `heroku logs`. You will see
+`Got request from Bitbucket.org` when bitbucket triggers the hook.
 
 ### Using a custom git repository as your source
 
