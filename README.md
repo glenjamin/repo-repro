@@ -58,7 +58,8 @@ Now you just need to enable the web hook on the source repo
 
 Github will record the results of each hook on the `Webhooks & Services` page.
 
-Activity will also be logged in the application log, see `heroku logs`.
+Activity will also be logged in the application log, see `heroku logs`. You will
+see `Got request from GitHub Hookshot <hash>` when GitHub triggers the hook.
 
 ### Using BitBucket as your source
 
@@ -70,9 +71,12 @@ Activity will also be logged in the application log, see `heroku logs`.
 BitBucket does not appear to record the results of each hook.
 
 Activity will be logged in the application log, see `heroku logs`. You will see
-`Got request from Bitbucket.org` when bitbucket triggers the hook.
+`Got request from Bitbucket.org` when BitBucket triggers the hook.
 
-### Using a custom git repository as your source
+### Using a vanilla git repository as your source
+
+In a `post-receive` hook, use cURL to trigger the *Hook URL*. In this scenario
+you might be better off doing the mirroring in the hook itself.
 
 
 How it Works
@@ -92,6 +96,7 @@ same series of actions.
 TODO
 ----
 
+ * Mercurial Support?
  * Private key based authentication
  * Multiple destinations
  * Multiple repositories in a single deploy
