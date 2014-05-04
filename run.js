@@ -46,6 +46,10 @@ function requireEnv(key) {
 
 function createServer(port, action) {
     var server = http.createServer(function(req, res) {
+        console.log(
+            "Got request from %s",
+            req.headers['user-agent'] || 'Unknown'
+        );
         action(function(err) {
             if (err) {
                 res.statusCode = 500;

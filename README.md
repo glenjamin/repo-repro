@@ -56,7 +56,16 @@ Now you just need to enable the web hook on the source repo
  * Ensure `Active` is ticked.
  * Hit the `Add Webhook` button.
 
+Github will record the results of each hook on the `Webhooks & Services` page.
+
 ### Using BitBucket as your source
+
+ * Select the `Administration` Cog ⚙ from your repository page.
+ * Select `Hooks` from the menu on the left
+ * Select `POST` from the hooks dropdown and click `Add Hook`
+ * Enter your *Hook URL* in the dialog box
+
+BitBucket does not appear to record the results of each hook.
 
 ### Using a custom git repository as your source
 
