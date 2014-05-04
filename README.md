@@ -29,7 +29,10 @@ heroku apps:create
 git push heroku
 ```
 
-Configure your remote source and destination repositories
+Make a note of the URL for your new app - we'll refer to this has the
+*Hook URL*.
+
+Now you need to configure your remote source and destination repositories
 
 ```bash
 heroku config:set SRC_REPO=<remote-repo-uri>
@@ -40,22 +43,37 @@ Currently only HTTPS basic auth credentials are supported, include these in the
 repository URI, eg. `https://user:pass@github.com/glenjamin/repo-repro`.
 
 
-Enable the web hook on the source repo
-```
-# TODO
-```
+Now you just need to enable the web hook on the source repo
 
-API
----
+### Using GitHub as your source
 
-The web service exposes a number of endpoints, these all perform the same sync
-action, but will produce the appropriate valid response for various web hook
-implementations
+ * Select `Settings` from your respository page
+ * Select `Webhooks & Services` from the menu on the left
+ * Hit the `Add Webhook` button
+ * Enter your *Hook URL* in the `Payload URL` field
+ * `Payload version` can be anything, `Secret` should be blank
+ * Select `Just the push event.`
+ * Ensure `Active` is ticked.
+ * Hit the `Add Webhook` button.
 
-`/` - Responds with text/plain 'OK' when done
+### Using BitBucket as your source
 
-`/github` - TODO
+### Using a custom git repository as your source
 
+
+How it Works
+------------
+
+On startup, the app claims a temporary directory to use as its local git repo.
+
+ * `git clone --mirror <src-repo> <tmpdir>`
+
+The app exposes a very simple HTTP endpoint which responds on any URL with the
+same series of actions.
+
+ * `git remote update`
+ * `git push --mirror <dest-repo>`
+ * Responds with 'OK'
 
 TODO
 ----

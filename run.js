@@ -48,6 +48,7 @@ function createServer(port, action) {
     var server = http.createServer(function(req, res) {
         action(function(err) {
             if (err) {
+                res.statusCode = 500;
                 res.write('ERROR!\n');
                 res.end(err.stack);
             } else {
